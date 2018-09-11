@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <login></login>
+    <dashboard></dashboard>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
 import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Login
+    Login,
+    Dashboard
   }
 }
 </script>
