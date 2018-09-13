@@ -33,22 +33,19 @@
             </ul>
           </div>
         </nav>
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
-            <h1 class="h2">Dashboard</h1>
-          </div>
-          <full-calendar :events="events"></full-calendar>
-        </main>
+        <!-- Aqui esta a workspace  -->
+        <workspace></workspace>
       </div>
     </div>
 </div>
 </template>
 
 <script>
+import Workspace from './Workspace'
 export default {
   name: 'hello',
   components: {
+    Workspace
   },
   data () {
     return {

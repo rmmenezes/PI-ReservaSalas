@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>sandkas</h1>
+  <h2>Calendario</h2>
       <full-calendar ref="calendar" :event-sources="eventSources" @event-selected="eventSelected" @event-created="eventCreated" :config="config"></full-calendar>
 </div>
 </template>
