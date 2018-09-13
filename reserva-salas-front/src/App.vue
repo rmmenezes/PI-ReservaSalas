@@ -8,13 +8,15 @@
 import HelloWorld from './components/HelloWorld'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+import Calendar from './components/Calendar'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     Login,
-    Dashboard
+    Dashboard,
+    Calendar
   }
 }
 </script>
