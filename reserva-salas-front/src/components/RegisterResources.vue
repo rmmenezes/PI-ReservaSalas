@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h4>Cadastro Recursos</h4>
         <form>
             <input type="text" id="inputPatrimonio" class="form-control" placeholder="Numero do Patrimonio" required autofocus>
             <br>
@@ -12,6 +13,7 @@
             <textarea id="inputDescrição" class="form-control" placeholder="Descrição" rows="7"></textarea>
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+            <br>
         </form>
     </div>
 </template>
