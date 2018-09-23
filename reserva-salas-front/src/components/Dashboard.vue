@@ -21,13 +21,15 @@
               </li>
             </ul>
             <h6 class="sidebar-heading d-flex justify-content-between px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
+              <span>Ambientes e Recursos</span>
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
+                <a class="nav-link">
+                  <router-link to="/dashboard/calendar">Reserva de Sala</router-link>
+                </a>
+                <a class="nav-link">
+                  <router-link to="/dashboard/register_resources">Cadastro Recursos</router-link>
                 </a>
               </li>
             </ul>

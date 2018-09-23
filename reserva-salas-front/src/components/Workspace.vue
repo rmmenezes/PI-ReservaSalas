@@ -1,7 +1,7 @@
 <template>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
           <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center ">
-               <register-resources></register-resources>
+            <router-view />
           </div>
     </main>
 </template>
