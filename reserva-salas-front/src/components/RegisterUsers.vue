@@ -1,7 +1,7 @@
 <template>
     <div>
         <h4>Cadastro Usuário</h4>
-        <form>
+        <form @submit.prevent="submit">
             <input type="text" v-model="inputNome" id="inputNome" class="form-control" placeholder="Nome" pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
             <br>
             <input type="email" v-model="inputEmail" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
