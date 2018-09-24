@@ -3,6 +3,16 @@
 const mongoose = require('mongoose');
 const Sala = mongoose.model('Sala');
 
+exports.get = (req, res, next) => {
+    Sala.find({})
+    .then(data => {
+        res.status(201).send(data);
+    }).catch(e => {
+        res.status(400).send(e);
+    });
+}
+
+
 exports.post = (req, res, next) => {
     var sala =  new Sala(req.body);
     
