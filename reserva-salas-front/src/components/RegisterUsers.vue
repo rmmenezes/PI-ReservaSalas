@@ -10,11 +10,11 @@
             <br>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="password" v-model="inputSenha1" id="inputSenha1" class="form-control" placeholder="Senha" SIZE="4" pattern="^[A-Za-z0-9]{4}" title="Senha com no minimo 4 caracteres" required autofocus>
+                    <input type="password" v-model="inputSenha1" id="inputSenha1" class="form-control" placeholder="Senha" pattern="^[A-Za-z0-9]{4}" title="Senha com no minimo 4 caracteres" required autofocus>
                     <br>
                 </div>
                 <div class="col-md-6">
-                    <input type="password" v-model="inputSenha2" id="inputSenha2" class="form-control" placeholder="Repita a senha" SIZE="4" pattern="^[A-Za-z0-9]{4}" title="Senha com no minimo 4 caracteres" required autofocus>
+                    <input type="password" v-model="inputSenha2" id="inputSenha2" class="form-control" placeholder="Repita a senha" pattern="^[A-Za-z0-9]{4}" title="Senha com no minimo 4 caracteres" required autofocus>
                     <br>
                 </div>
             </div>
