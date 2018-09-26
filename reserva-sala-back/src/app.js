@@ -12,11 +12,11 @@ const router = express.Router();
 mongoose.connect('mongodb://pi2018:pi2018@ds045077.mlab.com:45077/reservasala')
 
 //carrega os models
-const Salas =  require('./models/Model-salas');
+const Salas =  require('./models/Model-Reservas');
 
 //carrega as Rotas
 const indexRoutes = require('./routes/index');
-const salasOcupadasRoutes = require('./routes/salasOcupadas');
+const reservas = require('./routes/Routes-Reservas');
 
 
 app.use(bodyParser.json());
@@ -24,9 +24,10 @@ app.use(bodyParser.urlencoded({
     extended: false 
 }));
 
+//const csv = require('./models/opencsv');
 
 app.use('/', indexRoutes);
-app.use('/salasOcupadas', salasOcupadasRoutes);
+app.use('/reservas', reservas);
 
 
 module.exports = app;

@@ -1,10 +1,10 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const Sala = mongoose.model('Sala');
+const Reserva = mongoose.model('Reserva');
 
 exports.get = (req, res, next) => {
-    Sala.find({})
+    Reserva.find({})
     .then(data => {
         res.status(201).send(data);
     }).catch(e => {
@@ -14,9 +14,11 @@ exports.get = (req, res, next) => {
 
 
 exports.post = (req, res, next) => {
-    var sala =  new Sala(req.body);
+    var reserva =  new Reserva();
+    reserva.nome = req.nome;
+    reserva.tipo = req.tipo;
     
-    sala
+    reserva
     .save()
     .then(x => {
         res.status(201).send({

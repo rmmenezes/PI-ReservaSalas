@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controlers/salasReservadas-controler');
+const controller = require('../controlers/Controller-Reservas');
 
 router.get('/', controller.get);
 router.post('/', controller.post);
