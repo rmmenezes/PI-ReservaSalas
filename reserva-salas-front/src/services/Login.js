@@ -1,10 +1,10 @@
 import { http } from './config'
 
 export default {
-  listar: () => {
-    return http.get('login')
+  listar: (user) => {
+    return http.get('usuarios', user)
   },
   salvar: (user) => {
-    return http.post('login', user)
+    return http.post('usuarios', user)
   }
 }

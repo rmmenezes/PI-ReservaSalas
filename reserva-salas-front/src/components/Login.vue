@@ -26,23 +26,15 @@ export default {
   data () {
     return {
       obj_login: {
-        Email: '',
-        Senha: ''
+        email: '',
+        senha: ''
       }
     }
   },
-  mounted () {
-    Login.listar().then(resposta => {
-      console.log(resposta.data)
-    })
-  },
   methods: {
     salvar () {
-      Login.salvar(JSON.stringify(this.obj_Login)).then(resposta => {
+      Login.listar().then(resposta => {
         console.log(resposta.data)
-        console.log(JSON.stringify(this.obj_Login))
-      }).catch(function (error) {
-        console.log(error)
       })
     }
   }
