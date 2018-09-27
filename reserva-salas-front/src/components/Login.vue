@@ -1,7 +1,7 @@
 <template>
     <div>
         <h4><b>Sistema de Gerenciamento de Salas</b></h4>
-        <form class="form-signin">
+        <form class="form-signin" @submit.prevent="submit">
             <img src="../img/logo_utfpr.jpg" height="90%" width="90%">
             <br>
             <br>
@@ -12,10 +12,11 @@
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
             <hr/>
-            <a href="http://twitter.github.com/bootstrap/base-css.html#images">Esqueci minha senha</a>
-            <router-link to="/dashboard">Ir para Dashboard (temporario)</router-link>
-            <p class="mt-5 mb-3 text-muted">&copy;Sistema de Gerenciamento de Salas 2018-2018</p>
         </form>
+        <a href="http://twitter.github.com/bootstrap/base-css.html#images">Esqueci minha senha</a>
+        <br>
+        <router-link to="/dashboard">Ir para Dashboard (temporario)</router-link>
+        <p class="mt-5 mb-3 text-muted">&copy;Sistema de Gerenciamento de Salas 2018-2018</p>
     </div>
 </template>
 
