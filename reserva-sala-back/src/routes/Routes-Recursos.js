@@ -6,5 +6,6 @@ const controller = require('../controlers/Controller-Recursos');
 
 
 router.get('/', controller.get);
+router.post('/', controller.post);
 
 module.exports = router;

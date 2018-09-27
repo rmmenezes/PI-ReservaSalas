@@ -3,13 +3,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const config = require('./config');
 
 
 const app =  express();
 const router = express.Router();
 
 //connecta ao banco
-mongoose.connect('mongodb://pi2018:pi2018@ds045077.mlab.com:45077/reservasala')
+mongoose.connect(config.connectionString)
 
 //carrega os models
 const Salas =  require('./models/Model-Reservas');
@@ -51,7 +52,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/reservas', reservasRoutes);
 app.use('/usuarios', usuariosRoutes);
-app.use('recursos', recursosRoutes);
+app.use('/recursos', recursosRoutes);
 
 
 module.exports = app;
