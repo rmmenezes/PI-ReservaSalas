@@ -14,13 +14,14 @@ mongoose.connect('mongodb://pi2018:pi2018@ds045077.mlab.com:45077/reservasala')
 //carrega os models
 const Salas =  require('./models/Model-Reservas');
 const Usuarios =  require('./models/Model-Usuario');
-const Recursos =  require('./routes/Routes-Recursos');
+const Recursos =  require('./models/Model-Recursos');
 
 //carrega as Rotas
 const indexRoutes = require('./routes/index');
 const reservasRoutes = require('./routes/Routes-Reservas');
-const usuariosRoutes = require('./routes/Routes-Usuarios')
-const recursosRoutes = require('.routes/Routes-Recursos');
+const usuariosRoutes = require('./routes/Routes-Usuarios');
+const recursosRoutes = require('./routes/Routes-Recursos');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 
@@ -50,6 +51,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/reservas', reservasRoutes);
 app.use('/usuarios', usuariosRoutes);
-app.use('/recursos'. recursosRoutes);
+app.use('recursos', recursosRoutes);
+
 
 module.exports = app;

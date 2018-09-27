@@ -11,5 +11,3 @@ exports.get = (req, res, next) => {
             res.status(400).send(e);
         });
 };
-
-
