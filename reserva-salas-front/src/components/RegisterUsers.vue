@@ -10,11 +10,11 @@
             <br>
             <div class="row">
                 <div class="col-md-6">
-                    <input type="password" v-model="obj_User.senha1" id="inputSenha1" class="form-control" placeholder="Senha *" pattern="^[A-Za-z0-9]" required autofocus>
+                    <input type="password" v-model="obj_User.senha1" id="inputSenha1" class="form-control" placeholder="Senha *" pattern="^[A-Za-z0-9]+" required autofocus>
                     <br>
                 </div>
                 <div class="col-md-6">
-                    <input type="password" v-model="obj_User.senha2" id="inputSenha2" class="form-control" placeholder="Repita a senha *" pattern="^[A-Za-z0-9]" required autofocus>
+                    <input type="password" v-model="obj_User.senha2" id="inputSenha2" class="form-control" placeholder="Repita a senha *" pattern="^[A-Za-z0-9]+" required autofocus>
                     <br>
                 </div>
             </div>
@@ -36,11 +36,6 @@ export default {
         senha2: ''
       }
     }
-  },
-  mounted () {
-    User.listar().then(resposta => {
-      console.log(resposta.data)
-    })
   },
   methods: {
     salvar () {

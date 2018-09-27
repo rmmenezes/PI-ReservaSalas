@@ -2,7 +2,7 @@
     <div>
         <h4>Cadastro de Recursos</h4>
         <form @submit.prevent="salvar">
-            <input v-model="obj_Resource.patrimonio" type="number" id="inputPatrimonio" class="form-control" placeholder="Número do Patrimônio *" pattern="[0-9]" title="Insira apenas caracteres numéricos" required autofocus>
+            <input v-model="obj_Resource.patrimonio" type="number" id="inputPatrimonio" class="form-control" placeholder="Número do Patrimônio" pattern="[0-9]" title="Insira apenas caracteres numéricos" required autofocus>
             <br>
             <input v-model="obj_Resource.nome" type="text" id="inputNome" class="form-control" placeholder="Nome *" pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
             <br>

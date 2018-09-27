@@ -6,10 +6,10 @@
             <br>
             <br>
             <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" v-model="obj_login.Email" class="form-control" placeholder="Email" required autofocus>
+            <input type="email" id="inputEmail" v-model="obj_login.email" class="form-control" placeholder="Email" required autofocus>
             <br>
             <label for="inputPassword"  class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" v-model="obj_login.Senha" class="form-control" placeholder="Senha" required>
+            <input type="password" id="inputPassword" v-model="obj_login.senha" class="form-control" placeholder="Senha" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
             <hr/>
         </form>
@@ -33,8 +33,11 @@ export default {
   },
   methods: {
     salvar () {
-      Login.listar().then(resposta => {
+      Login.listar(this.obj_login).then(resposta => {
         console.log(resposta.data)
+        if (resposta) {
+          this.$router.push('dashboard')
+        }
       })
     }
   }

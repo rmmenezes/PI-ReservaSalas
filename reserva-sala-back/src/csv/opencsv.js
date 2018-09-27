@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://pi2018:pi2018@ds045077.mlab.com:45077/reservasala');
+mongoose.connect('mongodb://localhost:27017');
 
 
 const reserva = new mongoose.Schema({

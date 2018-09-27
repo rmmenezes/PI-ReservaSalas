@@ -4,7 +4,7 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" id="sidebarCollapse" v-on:click="greet" href="#">Reservas UTFPR</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sair</a>
+          <router-link to="/">Sair</router-link>
         </li>
       </ul>
     </nav>

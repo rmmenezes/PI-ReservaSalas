@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const recursoSchema = new mongoose.Schema({
 
     patrimonio: {
-        type: Number
-        
+        type: Number,
+        required: true
     },
     nome: {
         type: String,
@@ -21,7 +21,11 @@ const recursoSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-
+    quantidade: {
+        type: String,
+        trim: true,
+        required: true,
+    },
     desc: {
         type: String,
         trim: true
