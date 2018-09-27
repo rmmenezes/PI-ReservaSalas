@@ -5,32 +5,54 @@ const Reserva = mongoose.model('Reserva');
 
 exports.get = (req, res, next) => {
     Reserva.find({})
-    .then(data => {
-        res.status(201).send(data);
-    }).catch(e => {
-        res.status(400).send(e);
-    });
-}
+        .then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+
+
+exports.getbyName = (req, res, next) => {
+    Reserva.find({
+        nome: req.params.nome
+    })
+        .then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+
+exports.getbyId = (req, res, next) => {
+    Reserva.findById(
+        req.params.id
+    )
+        .then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+
 
 
 exports.post = (req, res, next) => {
-    var reserva =  new Reserva();
-    reserva.nome = req.nome;
-    reserva.tipo = req.tipo;
-    
+    var reserva = new Reserva(req.body);
+
     reserva
-    .save()
-    .then(x => {
-        res.status(201).send({
-            message: 'cadastrado'
+        .save()
+        .then(x => {
+            res.status(201).send({
+                message: 'cadastrado'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'falha',
+                data: e
+            });
         });
-    }).catch(e => {
-        res.status(400).send({
-            message: 'falha',
-            data: e
-        });
-    });
-    
+
 };
 
 exports.put = (req, res, next) => {
@@ -43,5 +65,18 @@ exports.put = (req, res, next) => {
 
 
 exports.delete = (req, res, next) => {
-    res.status(200).send(req.body);
+    Reserva.findOneAndRemove(
+        req.body.id
+    )
+        .then(data => {
+            res.status(201).send({
+                message: 'Produto removido com sucesso!'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'Falha ao remover produto',
+                data: e
+            });
+        });
+   
 };

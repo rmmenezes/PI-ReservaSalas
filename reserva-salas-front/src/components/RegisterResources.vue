@@ -1,16 +1,16 @@
 <template>
     <div>
-        <h4>Cadastro Recursos</h4>
-        <form>
-            <input type="text" id="inputPatrimonio" class="form-control" placeholder="Numero do Patrimonio" required autofocus>
+        <h4>Cadastro de Recursos</h4>
+        <form @submit.prevent="salvar">
+            <input v-model="obj_Resource.patrimonio" type="number" id="inputPatrimonio" class="form-control" placeholder="Número do Patrimônio" pattern="[0-9]" title="Insira apenas caracteres numéricos" required autofocus>
             <br>
-            <input type="text" id="inputNome" class="form-control" placeholder="Nome" required autofocus>
+            <input v-model="obj_Resource.nome" type="text" id="inputNome" class="form-control" placeholder="Nome" pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
             <br>
-            <input type="text" id="inputMarca" class="form-control" placeholder="Marca" required autofocus>
+            <input v-model="obj_Resource.marca" type="text" id="inputMarca" class="form-control" placeholder="Marca" required autofocus>
             <br>
-            <input type="text" id="inputModelo" class="form-control" placeholder="Modelo" required autofocus>
+            <input  v-model="obj_Resource.modelo" type="text" id="inputModelo" class="form-control" placeholder="Modelo" required autofocus>
             <br>
-            <textarea id="inputDescrição" class="form-control" placeholder="Descrição" rows="7"></textarea>
+            <textarea v-model="obj_Resource.desc" id="inputDes" class="form-control" placeholder="Descrição" rows="7"></textarea>
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
             <br>
@@ -19,10 +19,31 @@
 </template>
 
 <script>
+import Resource from '../services/RegisterResources.js'
 export default {
   data () {
     return {
-
+      obj_Resource: {
+        patrimonio: '',
+        nome: '',
+        marca: '',
+        modelo: '',
+        desc: ''
+      }
+    }
+  },
+  mounted () {
+    Resource.listar().then(resposta => {
+      console.log(resposta.data)
+    })
+  },
+  methods: {
+    salvar () {
+      Resource.salvar(this.obj_Resource).then(resposta => {
+        console.log(resposta.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }

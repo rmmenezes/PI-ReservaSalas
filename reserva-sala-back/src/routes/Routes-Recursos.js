@@ -2,10 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
+const controller = require('../controlers/Controller-Recursos');
 
-router.get('/', (req, res, next)=> {
-    res.status(200).send({ title: "node store api", version: "0.0.2"});
+router.get('/', controller.get);
 
-});
 
 module.exports = router;
