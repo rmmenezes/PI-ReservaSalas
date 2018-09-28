@@ -5,6 +5,7 @@ import Dashboard from '@/components/Dashboard'
 import RegisterResources from '@/components/RegisterResources'
 import RegisterUsers from '@/components/RegisterUsers'
 import Calendar from '@/components/Calendar'
+import ReserveResources from '@/components/ReserveResources'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
           path: 'register_resources',
           name: 'RegisterResources',
           component: RegisterResources
+        },
+        {
+          path: 'reserve_resources',
+          name: 'ReserveResources',
+          component: ReserveResources
         },
         {
           path: 'register_users',

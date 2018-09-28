@@ -25,7 +25,7 @@
                   <router-link to="/dashboard/calendar">Reserva de Sala</router-link>
                 </a>
                 <a class="nav-link">
-                  <router-link to="/dashboard/reserve_resource">Reserva de Recurso</router-link>
+                  <router-link to="/dashboard/reserve_resources">Reserva de Recurso</router-link>
                 </a>
                 <a class="nav-link">
                   <router-link to="/dashboard/register_users">Cadastro Usuários</router-link>
