@@ -9,10 +9,14 @@
 <script>
 import Calendar from './Calendar'
 import RegisterResources from './RegisterResources'
+import RegisterUsers from './RegisterUsers'
+import ReserveResources from './ReserveResources'
 export default {
   components: {
     Calendar,
-    RegisterResources
+    RegisterResources,
+    RegisterUsers,
+    ReserveResources
   }
 }
 </script>

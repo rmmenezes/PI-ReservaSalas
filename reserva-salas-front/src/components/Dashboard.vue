@@ -1,10 +1,10 @@
 <template>
 <div>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" id="sidebarCollapse" v-on:click="greet" href="#">Reserva de Salas</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" id="sidebarCollapse" v-on:click="greet" href="#">Reservas UTFPR</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <router-link to="/">Sair</router-link>
         </li>
       </ul>
     </nav>
@@ -14,10 +14,6 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li v-if="this.ok === 'adm'" class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
-                  Orders
-                </a>
               </li>
             </ul>
             <h6 class="sidebar-heading d-flex justify-content-between px-3 mt-4 mb-1 text-muted">
@@ -27,6 +23,9 @@
               <li class="nav-item">
                 <a class="nav-link">
                   <router-link to="/dashboard/calendar">Reserva de Sala</router-link>
+                </a>
+                <a class="nav-link">
+                  <router-link to="/dashboard/reserve_resources">Reserva de Recurso</router-link>
                 </a>
                 <a class="nav-link">
                   <router-link to="/dashboard/register_users">Cadastro Usuários</router-link>
