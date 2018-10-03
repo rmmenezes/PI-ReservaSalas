@@ -29,3 +29,20 @@ exports.post = (req, res, next) => {
 
 };
 
+exports.delete = (req, res, next) => {
+    Recurso.findOneAndRemove(
+        req.body.id
+    )
+        .then(data => {
+            res.status(201).send({
+                message: 'recurso removido com sucesso!'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'Falha ao remover recurso',
+                data: e
+            });
+        });
+   
+};
+
