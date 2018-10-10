@@ -19,7 +19,7 @@
             <div class="dropdown-menu" style="text-align: center">
                 <router-link to="/dashboard/register_users">Cadastrar Usuario</router-link>
                 <div class="dropdown-divider"></div>
-                <router-link to="/dashboard/register_users">Localizar Usuario</router-link>
+                <router-link to="/dashboard/search_users">Localizar Usuario</router-link>
             </div>
           </div>
           <div class="dropdown-divider"></div>
