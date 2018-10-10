@@ -11,9 +11,11 @@
     <div class="container-fluid">
       <div class="row" style="text-align:left;">
         <nav class="col-md-2 sidebar">
+          <br>
+          <h6 style="text-align:center; font-weight: bold; font-style: italic;">Atividades e Recursos</h6>
           <div class="dropdown-divider"></div>
           <div class="dropright">
-            <button type="button" class="btn btn-link btn-block" data-toggle="dropdown" >Usuarios</button>
+            <button type="button" class="btn btn-link btn-block" style="font-weight: bold" data-toggle="dropdown" >Usuarios</button>
             <div class="dropdown-menu" style="text-align: center">
                 <router-link to="/dashboard/register_users">Cadastrar Usuario</router-link>
                 <div class="dropdown-divider"></div>
@@ -22,7 +24,7 @@
           </div>
           <div class="dropdown-divider"></div>
           <div class="dropright">
-            <button type="button" class="btn btn-link  btn-block" data-toggle="dropdown" >Recursos</button>
+            <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown" >Recursos</button>
             <div class="dropdown-menu" style="text-align: center">
                 <router-link to="/dashboard/register_resources">Cadastrar Recurso</router-link>
                 <div class="dropdown-divider"></div>
@@ -31,7 +33,7 @@
           </div>
           <div class="dropdown-divider"></div>
           <div class="dropright">
-            <button type="button" class="btn btn-link  btn-block" data-toggle="dropdown" >Salas</button>
+            <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown" >Salas</button>
             <div class="dropdown-menu" style="text-align: center">
                 <router-link to="/dashboard/calendar">Cadastrar Sala</router-link>
                 <div class="dropdown-divider"></div>
