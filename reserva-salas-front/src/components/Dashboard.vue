@@ -1,41 +1,44 @@
 <template>
 <div>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" id="sidebarCollapse" v-on:click="greet" href="#">Reservas UTFPR</a>
+    <nav class="navbar navbar-dark fixed-top bg-dark shadow">
+      <h5 style="color: White">Reservas UTFPR</h5>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <router-link to="/">Sair</router-link>
+          <router-link style="color: white" to="/">Sair</router-link>
         </li>
       </ul>
     </nav>
     <div class="container-fluid">
       <div class="row" style="text-align:left;">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li v-if="this.ok === 'adm'" class="nav-item">
-              </li>
-            </ul>
-            <h6 class="sidebar-heading d-flex justify-content-between px-3 mt-4 mb-1 text-muted">
-              <span>Ambientes e Recursos</span>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link">
-                  <router-link to="/dashboard/calendar">Reserva de Sala</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/reserve_resources">Reserva de Recurso</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/register_users">Cadastro Usuários</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/register_resources">Cadastro Recursos</router-link>
-                </a>
-              </li>
-            </ul>
+        <nav class="col-md-2 sidebar">
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link btn-block" data-toggle="dropdown" >Usuarios</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/register_users">Cadastrar Usuario</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/register_users">Localizar Usuario</router-link>
+            </div>
           </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link  btn-block" data-toggle="dropdown" >Recursos</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/register_resources">Cadastrar Recurso</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/register_resources">Localizar Recurso</router-link>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link  btn-block" data-toggle="dropdown" >Salas</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/calendar">Cadastrar Sala</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/calendar">Localizar Sala</router-link>
+            </div>
+          </div>
+        <div class="dropdown-divider"></div>
         </nav>
         <!-- Aqui esta a workspace  -->
         <workspace></workspace>
