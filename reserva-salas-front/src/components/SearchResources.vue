@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <h4>Localizar Usuário</h4>
+        <h4>Localizar Recursos</h4>
         <form @submit.prevent="localizar">
             <div class="row">
                 <div class="col-md-8">
@@ -18,8 +18,9 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Nº Patrimônio</th>
                   <th>Nome</th>
-                  <th>Departamento</th>
+                  <th>Quantidade</th>
                   <th class="actions">Ações</th>
                 </tr>
               </thead>
