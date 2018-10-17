@@ -1,10 +1,11 @@
 <template>
     <div class="container-fluid">
         <h4>Localizar Usuário</h4>
-        <form @submit.prevent="localizar(nome_localizar)">
+        <form @submit.prevent="localizar()">
             <div class="row">
                 <div class="col-md-8">
-                    <input type="text" v-model="nome_localizar" id="nomeLocalizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z]+" required autofocus>
+                    <input type="text" v-model="nome_localizar" id="nomeLocalizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z ]+" required autofocus>
+                    <br>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-primary btn-block" type="submit">Localizar</button>
@@ -25,13 +26,13 @@
               </thead>
               <tbody v-for="(res, i) in res_localizar" :key="res.id" v-if="res_localizar">
                 <tr>
-                  <td>{{i}}</td>
+                  <td>{{i+1}}</td>
                   <td>{{res.nome}}</td>
                   <td>{{res.departamento}}</td>
                   <td class="actions">
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                    <button type="button" style="width: 75px;" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
+                    <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
+                    <button type="button" style="width: 75px;" class="btn btn-danger btn-sm">Excluir</button>
                   </td>
                 </tr>
               </tbody>
@@ -130,8 +131,8 @@ export default {
         alert('Erro, Cadastro não efetuado!')
       })
     },
-    localizar (n) {
-      User.listar(n).then(resposta => {
+    localizar () {
+      User.listar(this.nome_localizar).then(resposta => {
         console.log(resposta.data)
         this.res_localizar = resposta.data
         console.log(this.res_localizar)
