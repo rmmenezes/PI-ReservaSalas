@@ -1,41 +1,46 @@
 <template>
 <div>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" id="sidebarCollapse" v-on:click="greet" href="#">Reservas UTFPR</a>
+    <nav class="navbar navbar-dark fixed-top bg-dark shadow">
+      <h5 style="color: White">Reservas UTFPR</h5>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <router-link to="/">Sair</router-link>
+          <router-link style="color: white" to="/">Sair</router-link>
         </li>
       </ul>
     </nav>
     <div class="container-fluid">
       <div class="row" style="text-align:left;">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li v-if="this.ok === 'adm'" class="nav-item">
-              </li>
-            </ul>
-            <h6 class="sidebar-heading d-flex justify-content-between px-3 mt-4 mb-1 text-muted">
-              <span>Ambientes e Recursos</span>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link">
-                  <router-link to="/dashboard/calendar">Reserva de Sala</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/reserve_resources">Reserva de Recurso</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/register_users">Cadastro Usuários</router-link>
-                </a>
-                <a class="nav-link">
-                  <router-link to="/dashboard/register_resources">Cadastro Recursos</router-link>
-                </a>
-              </li>
-            </ul>
+        <nav class="col-md-2 sidebar">
+          <br>
+          <h6 style="text-align:center; font-weight: bold; font-style: italic;">Atividades e Recursos</h6>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link btn-block" style="font-weight: bold" data-toggle="dropdown" >Usuarios</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/register_users">Cadastrar Usuario</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/search_users">Localizar Usuario</router-link>
+            </div>
           </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown" >Recursos</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/register_resources">Cadastrar Recurso</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/search_resources">Localizar Recurso</router-link>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown" >Salas</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/calendar">Cadastrar Sala</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/calendar">Localizar Sala</router-link>
+            </div>
+          </div>
+        <div class="dropdown-divider"></div>
         </nav>
         <!-- Aqui esta a workspace  -->
         <workspace></workspace>
@@ -68,77 +73,6 @@ export default {
 </script>
 
 <style>
-body {
-  font-size: .875rem;
-}
-
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
-/*
- * Sidebar
- */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(143, 27, 27, 0.1);
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-}
-
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
-
-.sidebar .nav-link.active {
-  color: #007bff;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Content
- */
-
-[role="main"] {
-  padding-top: 15px; /* Space for fixed navbar */
-}
 
 /*
  * Navbar

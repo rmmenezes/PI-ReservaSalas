@@ -11,12 +11,14 @@ import Calendar from './Calendar'
 import RegisterResources from './RegisterResources'
 import RegisterUsers from './RegisterUsers'
 import ReserveResources from './ReserveResources'
+import SearchUsers from './SearchUsers'
 export default {
   components: {
     Calendar,
     RegisterResources,
     RegisterUsers,
-    ReserveResources
+    ReserveResources,
+    SearchUsers
   }
 }
 </script>
