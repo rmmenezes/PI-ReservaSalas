@@ -46,6 +46,20 @@ exports.delete = (req, res, next) => {
     });
 };
 
+exports.getbyName = (req, res, next) =>{
+    Usuario.find({
+        nome: req.params.nome
+
+    })
+        .then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+
+};
+
+
 exports.login = (req, res, next) => {
     Usuario.find({
         email: req.params.email,

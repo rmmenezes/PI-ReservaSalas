@@ -10,7 +10,7 @@ const app =  express();
 const router = express.Router();
 
 //connecta ao banco
-mongoose.connect(config.connectionString)
+mongoose.connect(config.connectionString);
 
 //carrega os models
 const Salas =  require('./models/Model-Reservas');
