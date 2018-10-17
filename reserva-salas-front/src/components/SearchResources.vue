@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import User from '../services/RegisterResources.js'
+import User from '../services/Resources.js'
 export default {
   data () {
     return {

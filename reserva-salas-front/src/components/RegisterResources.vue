@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Resource from '../services/RegisterResources.js'
+import Resource from '../services/Resources.js'
 export default {
   data () {
     return {

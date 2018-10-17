@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import User from '../services/RegisterUsers.js'
+import User from '../services/Users.js'
 export default {
   data () {
     return {

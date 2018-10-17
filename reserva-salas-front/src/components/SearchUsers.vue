@@ -1,10 +1,10 @@
 <template>
     <div class="container-fluid">
         <h4>Localizar Usuário</h4>
-        <form @submit.prevent="localizar">
+        <form @submit.prevent="localizar(nome_localizar)">
             <div class="row">
                 <div class="col-md-8">
-                    <input type="text" id="nomeLocalizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z]+" required autofocus>
+                    <input type="text" v-model="nome_localizar" id="nomeLocalizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z]+" required autofocus>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-primary btn-block" type="submit">Localizar</button>
@@ -99,11 +99,12 @@
 </template>
 
 <script>
-import User from '../services/RegisterUsers.js'
+import User from '../services/Users.js'
 export default {
   data () {
     return {
       res_localizar: [],
+      nome_localizar: '',
       obj_User: {
         nome: '',
         email: '',
@@ -129,8 +130,8 @@ export default {
         alert('Erro, Cadastro não efetuado!')
       })
     },
-    localizar () {
-      User.listar().then(resposta => {
+    localizar (n) {
+      User.listar(n).then(resposta => {
         console.log(resposta.data)
         this.res_localizar = resposta.data
         console.log(this.res_localizar)
