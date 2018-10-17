@@ -27,8 +27,9 @@
               <tbody v-for="(res, i) in res_localizar" :key="res.id" v-if="res_localizar">
                 <tr>
                   <td>{{i}}</td>
+                  <td>{{res.patrimonio}}</td>
                   <td>{{res.nome}}</td>
-                  <td>{{res.departamento}}</td>
+                  <td>{{res.quantidade}}</td>
                   <td class="actions">
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
@@ -44,28 +45,34 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editar Recurso</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form @submit.prevent="salvar">
-              <label>Nome:</label>
-              <input type="text" v-model="obj_User.nome" value='' id="inputNome" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
-              <label>Email:</label>
-              <input type="email" v-model="obj_User.email" id="inputEmail" class="form-control"  required autofocus>
-              <label>Departamento</label>
-              <input type="text" v-model="obj_User.departamento" id="inputDepartamento" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais"  required autofocus>
-              <div class="row">
-                  <div class="col-md-6">
-                      <label>Senha:</label>
-                      <input type="password" v-model="obj_User.senha1" id="inputSenha1" class="form-control"  pattern="^[A-Za-z0-9]+" required autofocus>
-                      <br>
-                  </div>
-                  <div class="col-md-6"></div>
-              </div>
-          </form>
+                <label>Número do Patrimônio</label>
+                <input v-model="obj_Resource.patrimonio" type="number" id="inputPatrimonio" class="form-control" pattern="[0-9]" title="Insira apenas caracteres numéricos" required autofocus>
+                <label>Nome</label>
+                <input v-model="obj_Resource.nome" type="text" id="inputNome" class="form-control" pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
+                <div class="row">
+                    <div class="col-md-4">
+                      <label>Marca</label>
+                      <input v-model="obj_Resource.marca" type="text" id="inputMarca" class="form-control" required autofocus>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Modelo</label>
+                      <input  v-model="obj_Resource.modelo" type="text" id="inputModelo" class="form-control"  required autofocus>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Quantidade</label>
+                      <input  v-model="obj_Resource.quantidade" type="number" id="inputQuantidade" class="form-control" required autofocus>
+                    </div>
+                </div>
+                <label>Descrição</label>
+                <textarea v-model="obj_Resource.desc" id="inputDes" class="form-control" rows="7"></textarea>
+            </form>
           </div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="submit">Salvar alterações</button>
@@ -85,11 +92,17 @@
               </button>
             </div>
             <div class="modal-body">
+                <label>Nº Patrimônio: {{modalData.patrimonio}}</label>
+                <br>
                 <label>Nome: {{modalData.nome}}</label>
                 <br>
-                <label>Email: {{modalData.email}}</label>
+                <label>Marca: {{modalData.marca}}</label>
                 <br>
-                <label>Departamento: {{modalData.departamento}}</label>
+                <label>Modelo: {{modalData.modelo}}</label>
+                <br>
+                <label>Quantidade: {{modalData.quantidade}}</label>
+                <br>
+                <label>Descição: {{modalData.desc}}</label>
                 <br>
             </div>
           </div>
@@ -100,17 +113,18 @@
 </template>
 
 <script>
-import User from '../services/RegisterUsers.js'
+import User from '../services/RegisterResources.js'
 export default {
   data () {
     return {
       res_localizar: [],
-      obj_User: {
+      obj_Resource: {
+        patrimonio: '',
         nome: '',
-        email: '',
-        departamento: '',
-        senha1: '',
-        senha2: ''
+        marca: '',
+        modelo: '',
+        quantidade: '',
+        desc: ''
       },
       modalVisible: false,
       modalData: ''
@@ -122,7 +136,7 @@ export default {
       this.modalVisible = true
     },
     salvar () {
-      User.salvar(this.obj_User).then(resposta => {
+      User.salvar(this.obj_Resource).then(resposta => {
         console.log(resposta.data)
         alert('Cadastro efetuado com sucesso!')
       }).catch(function (error) {
