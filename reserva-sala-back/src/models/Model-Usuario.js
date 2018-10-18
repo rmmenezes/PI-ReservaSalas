@@ -7,11 +7,11 @@ const usuarioSchema = new mongoose.Schema({
     nome: {
         type: String,
         required: true,
-        trim: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     departamento: {
         type: String,
@@ -24,6 +24,11 @@ const usuarioSchema = new mongoose.Schema({
     senha2: {
         type: String,
         required: true
+    },
+    active: {
+        type:Boolean,
+        required:true,
+        default:true
     }
    
 });
