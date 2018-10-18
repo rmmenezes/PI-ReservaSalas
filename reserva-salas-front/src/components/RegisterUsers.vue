@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import User from '../services/RegisterUsers.js'
+import User from '../services/Users.js'
 export default {
   data () {
     return {
@@ -42,6 +42,7 @@ export default {
       User.salvar(this.obj_User).then(resposta => {
         console.log(resposta.data)
         alert('Cadastro efetuado com sucesso!')
+        location.reload()
       }).catch(function (error) {
         console.log(error)
         alert('Erro, Cadastro não efetuado!')

@@ -29,6 +29,18 @@ exports.post = (req, res, next) => {
 
 };
 
+exports.getbyName = (req, res, next) =>{
+    Recurso.find({
+        nome: req.params.nome
+    })
+        .then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+
+
 exports.delete = (req, res, next) => {
     Recurso.findOneAndRemove(
         req.body.id

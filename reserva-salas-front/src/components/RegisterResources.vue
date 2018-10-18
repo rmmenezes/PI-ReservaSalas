@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Resource from '../services/RegisterResources.js'
+import Resource from '../services/Resources.js'
 export default {
   data () {
     return {
@@ -53,6 +53,7 @@ export default {
       Resource.salvar(this.obj_Resource).then(resposta => {
         console.log(resposta.data)
         alert('Cadastro efetuado com sucesso!')
+        location.reload()
       }).catch(function (error) {
         console.log(error)
         alert('Erro, Cadastro não efetuado!')
