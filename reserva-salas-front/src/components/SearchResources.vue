@@ -1,10 +1,11 @@
 <template>
     <div class="container-fluid">
         <h4>Localizar Recursos</h4>
-        <form @submit.prevent="localizar">
+        <form @submit.prevent="localizar()">
             <div class="row">
                 <div class="col-md-8">
-                    <input type="text" id="nomeLocalizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z]+" required autofocus>
+                    <input type="text" id="nomeLocalizar" v-model="nome_localizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z ]+" required autofocus>
+                    <br>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-primary btn-block" type="submit">Localizar</button>
@@ -26,14 +27,14 @@
               </thead>
               <tbody v-for="(res, i) in res_localizar" :key="res.id" v-if="res_localizar">
                 <tr>
-                  <td>{{i}}</td>
+                  <td>{{i+1}}</td>
                   <td>{{res.patrimonio}}</td>
                   <td>{{res.nome}}</td>
                   <td>{{res.quantidade}}</td>
                   <td class="actions">
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
-                    <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                    <button type="button" style="width: 75px;" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
+                    <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
+                    <button type="button" style="width: 75px;" class="btn btn-danger btn-sm">Excluir</button>
                   </td>
                 </tr>
               </tbody>
@@ -118,6 +119,7 @@ export default {
   data () {
     return {
       res_localizar: [],
+      nome_localizar: '',
       obj_Resource: {
         patrimonio: '',
         nome: '',
@@ -145,7 +147,8 @@ export default {
       })
     },
     localizar () {
-      User.listar().then(resposta => {
+      console.log(this.nome_localizar)
+      User.listar(this.nome_localizar).then(resposta => {
         console.log(resposta.data)
         this.res_localizar = resposta.data
         console.log(this.res_localizar)

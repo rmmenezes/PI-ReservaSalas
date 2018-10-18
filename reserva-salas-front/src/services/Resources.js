@@ -1,8 +1,8 @@
 import { http } from './config'
 
 export default {
-  listar: () => {
-    return http.get('recursos')
+  listar: (nome) => {
+    return http.get('recursos' + '/' + nome)
   },
   salvar: (produto) => {
     return http.post('recursos', produto)
