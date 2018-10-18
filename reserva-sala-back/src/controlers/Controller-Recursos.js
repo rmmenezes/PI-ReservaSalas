@@ -29,6 +29,31 @@ exports.post = (req, res, next) => {
 
 };
 
+exports.put = (req, res, next) => {
+    recurso
+        .findByIdAndUpdate(req.params.id, {
+            $set: {
+                patrimonio: req.body.patrimonio,
+                nome: req.body.nome,
+                marca: req.body.marca,
+                modelo: req.body.modelo,
+                quantidade: req.body.quantidade,
+                desc: req.body.desc
+            }
+        }).then(x => {
+            res.status(201).send({
+                message: 'Recurso atualizado com sucesso!'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'Falha ao atualizar recurso!'
+                data: e
+            });
+        });
+    
+};
+
+
 exports.delete = (req, res, next) => {
     Recurso.findOneAndRemove(
         req.body.id
