@@ -29,6 +29,11 @@ const recursoSchema = new mongoose.Schema({
     desc: {
         type: String,
         trim: true
+    },
+    active: {
+        type:Boolean,
+        required:true,
+        default:true
     }
     
 
