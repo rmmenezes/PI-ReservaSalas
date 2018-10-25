@@ -6,5 +6,8 @@ export default {
   },
   salvar: (user) => {
     return http.post('usuarios', user)
+  },
+  excluir: (id) => {
+    return http.delete('usuarios', id)
   }
 }

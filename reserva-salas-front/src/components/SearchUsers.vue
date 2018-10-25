@@ -30,9 +30,12 @@
                   <td>{{res.nome}}</td>
                   <td>{{res.departamento}}</td>
                   <td class="actions">
+                  <form @submit.prevent="excluir(res._id)">
+                    <input type="hidden" v-model="res._id" >
                     <button type="button" style="width: 75px;" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
                     <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
-                    <button type="button" style="width: 75px;" class="btn btn-danger btn-sm">Excluir</button>
+                    <button type="submit" style="width: 75px;" class="btn btn-danger btn-sm" >Excluir</button>
+                    </form>
                   </td>
                 </tr>
               </tbody>
@@ -136,6 +139,15 @@ export default {
         console.log(resposta.data)
         this.res_localizar = resposta.data
         console.log(this.res_localizar)
+      }).catch(function (error) {
+        console.log(error)
+        alert('Registro não encontrado')
+      })
+    },
+    excluir (id) {
+      User.excluir(id).then(resposta => {
+        alert('Usuario excluido com sucesso')
+        location.reload()
       }).catch(function (error) {
         console.log(error)
         alert('Registro não encontrado')
