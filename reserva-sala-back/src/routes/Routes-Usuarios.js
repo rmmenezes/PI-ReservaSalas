@@ -9,5 +9,6 @@ router.get('/:nome', controller.getbyName);
 router.get('/:email/:senha', controller.login);
 router.post('/', controller.post);
 router.delete('/', controller.delete);
+router.put('/', controller.put);
 
 module.exports = router;

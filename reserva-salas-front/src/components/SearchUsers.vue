@@ -33,7 +33,7 @@
                   <form @submit.prevent="excluir(res._id)">
                     <input type="hidden" v-model="res._id" >
                     <button type="button" style="width: 75px;" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
-                    <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Editar</button>
+                    <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-editar" @click="openModal(res)">Editar</button>
                     <button type="submit" style="width: 75px;" class="btn btn-danger btn-sm" >Excluir</button>
                     </form>
                   </td>
@@ -43,7 +43,7 @@
           </div>
         </div><!-- /#list -->
       <!-- MODAL EDITAR (INICIO) -->
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal fade bd-example-modal-lg-editar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -53,26 +53,27 @@
             </button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="salvar">
-              <label>Nome:</label>
-              <input type="text" v-model="obj_User.nome" value='' id="inputNome" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
+            <form @submit.prevent="editar (modalData)">
+              <label>Nome: </label>
+              <input type="text" v-model="modalData.nome" value='' id="inputNome" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
               <label>Email:</label>
-              <input type="email" v-model="obj_User.email" id="inputEmail" class="form-control"  required autofocus>
+              <input type="email" v-model="modalData.email" id="inputEmail" class="form-control"  required autofocus>
               <label>Departamento</label>
-              <input type="text" v-model="obj_User.departamento" id="inputDepartamento" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais"  required autofocus>
+              <input type="text" v-model="modalData.departamento" id="inputDepartamento" class="form-control"  pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais"  required autofocus>
               <div class="row">
                   <div class="col-md-6">
                       <label>Senha:</label>
-                      <input type="password" v-model="obj_User.senha1" id="inputSenha1" class="form-control"  pattern="^[A-Za-z0-9]+" required autofocus>
+                      <input type="password" v-model="obj_User.senha1" id="inputSenha1" class="form-control"  pattern="^[A-Za-z0-9]+">
                       <br>
                   </div>
                   <div class="col-md-6"></div>
               </div>
-          </form>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" type="submit">Salvar alterações</button>
+              </div>
+             </form>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Salvar alterações</button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -110,6 +111,7 @@ export default {
       res_localizar: [],
       nome_localizar: '',
       obj_User: {
+        _id: '',
         nome: '',
         email: '',
         departamento: '',
@@ -152,7 +154,19 @@ export default {
         console.log(error)
         alert('Registro não encontrado')
       })
+    },
+    editar (user) {
+      console.log(user.nome)
+      console.log(user._id)
+      User.editar(user).then(resposta => {
+        console.log(resposta.data)
+        alert('Usuario editado com sucesso!')
+      }).catch(function (error) {
+        console.log(error)
+        alert('Erro, edição não efetuada!')
+      })
     }
+
   }
 }
 </script>

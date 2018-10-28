@@ -9,5 +9,8 @@ export default {
   },
   excluir: (id) => {
     return http.delete('usuarios', id)
+  },
+  editar: (user) => {
+    return http.put('usuarios', user)
   }
 }
