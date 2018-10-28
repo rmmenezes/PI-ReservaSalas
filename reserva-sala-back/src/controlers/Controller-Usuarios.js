@@ -18,7 +18,7 @@ exports.post = (req, res, next) => {
     usuario
         .save()
         .then(x => {
-            res.status(201).send({
+            res.status(200).send({
                 message: 'cadastrado'
             });
         }).catch(e => {
@@ -28,6 +28,26 @@ exports.post = (req, res, next) => {
             });
         });
 
+};
+
+exports.put = (req, res, next) => {
+    Usuario.findOneAndUpdate(req.body._id, {
+        $set: {
+            nome: req.body.nome,
+            departamento: req.body.departamento,
+            email: req.body.email       
+        }
+        }).then(x => {
+            res.status(200).send({
+                message: 'cadastrado'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'falha',
+                data: e
+            });
+        });
+    
 };
 
 exports.delete = (req, res, next) => {
