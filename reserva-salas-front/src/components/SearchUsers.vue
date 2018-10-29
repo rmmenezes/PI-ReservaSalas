@@ -153,17 +153,17 @@ export default {
       User.excluir(id).then(resposta => {
         alert('Usuario excluido com sucesso')
         location.reload()
+        location.reload()
       }).catch(function (error) {
         console.log(error)
         alert('Registro não encontrado')
       })
     },
     editar (user) {
-      console.log(user.nome)
-      console.log(user._id)
       User.editar(user).then(resposta => {
         console.log(resposta.data)
         alert('Usuario editado com sucesso!')
+        location.reload()
       }).catch(function (error) {
         console.log(error)
         alert('Erro, edição não efetuada!')

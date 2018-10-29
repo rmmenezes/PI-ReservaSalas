@@ -4,7 +4,13 @@ export default {
   listar: (nome) => {
     return http.get('recursos' + '/' + nome)
   },
-  salvar: (produto) => {
-    return http.post('recursos', produto)
+  salvar: (recurso) => {
+    return http.post('recursos', recurso)
+  },
+  editar: (recurso) => {
+    return http.put('recursos', recurso)
+  },
+  excluir: (recurso) => {
+    return http.delete('recursos', recurso)
   }
 }
