@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <h4>Localizar Recursos</h4>
-        <form @submit.prevent="localizar()">
+        <form @submit.prevent="localizar(nome_localizar)">
             <div class="row">
                 <div class="col-md-8">
                     <input type="text" id="nomeLocalizar" v-model="nome_localizar" class="form-control" placeholder="Nome *" pattern="^[A-Za-z ]+" required autofocus>
@@ -132,6 +132,9 @@ export default {
       modalData: ''
     }
   },
+  mounted () {
+    this.localizar('admin')
+  },
   methods: {
     openModal (data) {
       this.modalData = data
@@ -146,12 +149,11 @@ export default {
         alert('Erro, Cadastro não efetuado!')
       })
     },
-    localizar () {
-      console.log(this.nome_localizar)
-      User.listar(this.nome_localizar).then(resposta => {
+    localizar (nome) {
+      console.log(nome)
+      User.listar(nome).then(resposta => {
         console.log(resposta.data)
         this.res_localizar = resposta.data
-        console.log(this.res_localizar)
       }).catch(function (error) {
         console.log(error)
         alert('Registro não encontrado')
