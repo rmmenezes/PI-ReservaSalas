@@ -1,7 +1,7 @@
 <template>
     <div>
         <h4><b>Sistema de Gerenciamento de Salas</b></h4>
-        <form class="form-signin" @submit.prevent="salvar">
+        <form class="form-signin" @submit.prevent="editar">
             <img src="../img/logo_utfpr.jpg" height="90%" width="90%">
             <br>
             <br>
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    salvar () {
+    editar () {
       Login.listar(this.obj_login).then(resposta => {
         console.log(resposta.data)
         if (resposta) {
