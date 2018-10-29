@@ -58,3 +58,26 @@ exports.delete = (req, res, next) => {
    
 };
 
+
+exports.put = (req, res, next) => {
+    Recurso.findOneAndUpdate(req.body._id, {
+        $set: {
+            patimonio: req.body.patimonio,
+            nome: req.body.nome,
+            marca: req.body.marca,
+            modelo: req.body.modelo,
+            quantidade: req.body.quantidade,
+            desc: req.body.desc     
+        }
+        }).then(x => {
+            res.status(200).send({
+                message: 'cadastrado'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'falha',
+                data: e
+            });
+        });
+    
+};
