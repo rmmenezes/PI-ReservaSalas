@@ -29,6 +29,8 @@
                 <router-link to="/dashboard/register_resources">Cadastrar Recurso</router-link>
                 <div class="dropdown-divider"></div>
                 <router-link to="/dashboard/search_resources">Localizar Recurso</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/reserve_resources">Reservar Recurso</router-link>
             </div>
           </div>
           <div class="dropdown-divider"></div>
