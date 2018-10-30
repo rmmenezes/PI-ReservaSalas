@@ -1,8 +1,18 @@
 <template>
     <div>
         <h4>Reserva de Recursos</h4>
-        <form @submit.prevent="salvar">
-            <input type="text" id="inputPesquisa" class="form-control" placeholder="Pesquisar Recursos" required autofocus>
+            <form @submit.prevent="salvar">
+              <form @submit.prevent="localizar(nome_localizar)">
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="text" id="nomeLocalizar" v-model="nome_localizar" class="form-control" placeholder="Nome Recurso *" pattern="^[A-Za-z ]+" required autofocus>
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary btn-block" type="submit">Localizar</button>
+                    </div>
+                </div>
+            </form>
             <span>Disponives:</span>
             <div style="overflow: scroll; height: 100px; background-color: #f1f1f1;">
             <table class="table table-sm" cellspacing="0" cellpadding="0" style="text-align: center;">
@@ -14,8 +24,9 @@
                       <th>Nome: </th><td>{{res.nome}}</td>
                       <th>Quantidade: </th><td>{{res.quantidade}}</td>
                     </div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais">Escolher</button>
+                    <div class="form-check col-md-6">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">Selecionar</label>
                     </div>
                   </div>
                 </tr>
