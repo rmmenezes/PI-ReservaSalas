@@ -6,7 +6,6 @@
                 <div class="row">
                     <div class="col-md-8">
                         <input type="text" id="nomeLocalizar" v-model="nome_localizar" class="form-control" placeholder="Nome Recurso *" pattern="^[A-Za-z ]+" required autofocus>
-                        <br>
                     </div>
                     <div class="col-md-4">
                         <button class="btn btn-primary btn-block" type="submit">Localizar</button>
@@ -14,7 +13,7 @@
                 </div>
             </form>
             <span>Disponives:</span>
-            <div style="overflow: scroll; height: 100px; background-color: #f1f1f1;">
+            <div style="overflow: scroll; height: 140px; background-color: #f1f1f1;">
             <table class="table table-sm" cellspacing="0" cellpadding="0" style="text-align: center;">
               <tbody v-for="(res, i) in res_localizar" :key="res.id" v-if="res_localizar">
                 <tr>
@@ -34,20 +33,19 @@
             </table>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <span>Data de Locação:</span>
                   <datepicker :inline="true" :language="ptBR" :value="state.date"></datepicker>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <span>Data de Entrega:</span>
                   <datepicker :inline="true" :language="ptBR" :value="state.date"></datepicker>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-4">
+                  <span>Data de Entrega:</span>
+                  <input type="number" id="nomeLocalizar" class="form-control" placeholder="Quantidade *" pattern="^[A-Za-z ]+" required autofocus>
                   <br>
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Reservar</button>
-                  <br>
                 </div>
             </div>
         </form>
