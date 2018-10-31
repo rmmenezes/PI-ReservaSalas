@@ -12,5 +12,8 @@ export default {
   },
   excluir: (recurso) => {
     return http.delete('recursos', recurso)
+  },
+  reservar: (reserva) => {
+    return http.reservar('recursos', reserva)
   }
 }

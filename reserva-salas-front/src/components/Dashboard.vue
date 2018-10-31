@@ -15,11 +15,11 @@
           <h6 style="text-align:center; font-weight: bold; font-style: italic;">Atividades e Recursos</h6>
           <div class="dropdown-divider"></div>
           <div class="dropright">
-            <button type="button" class="btn btn-link btn-block" style="font-weight: bold" data-toggle="dropdown" >Usuarios</button>
+            <button type="button" class="btn btn-link btn-block" style="font-weight: bold" data-toggle="dropdown" >Usuários</button>
             <div class="dropdown-menu" style="text-align: center">
-                <router-link to="/dashboard/register_users">Cadastrar Usuario</router-link>
+                <router-link to="/dashboard/register_users">Cadastrar Usuário</router-link>
                 <div class="dropdown-divider"></div>
-                <router-link to="/dashboard/search_users">Localizar Usuario</router-link>
+                <router-link to="/dashboard/search_users">Localizar Usuário</router-link>
             </div>
           </div>
           <div class="dropdown-divider"></div>
