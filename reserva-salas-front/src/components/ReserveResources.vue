@@ -100,7 +100,7 @@ export default {
       objReserva.data_entrega = date.format(objReserva.data_entrega, 'DD/MM/YYYY')
       console.log(objReserva)
       if (parseInt(objReserva.quantidade_objs) < parseInt(objReserva.quantidade_reserva)) {
-        alert('Reserva não efetuada: A quantidade exede o numero total no estoque.')
+        alert('Reserva não efetuada: A quantidade excede o numero total no estoque.')
       } else {
         Resource.reservar(objReserva).then(resposta => {
           console.log(resposta.data)
