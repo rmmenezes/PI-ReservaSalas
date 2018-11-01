@@ -54,7 +54,7 @@
           <div class="modal-body">
             <form @submit.prevent="editar (modalData)">
                 <label>Número do Patrimônio</label>
-                <input v-model="modalData.patrimonio" type="number" id="inputPatrimonio" class="form-control" pattern="[0-9]" title="Insira apenas caracteres numéricos" required autofocus>
+                <input v-model="modalData.patrimonio" type="number" id="inputPatrimonio" class="form-control" required autofocus>
                 <label>Nome</label>
                 <input v-model="modalData.nome" type="text" id="inputNome" class="form-control" pattern="[a-zA-Z \s]+$" title="Insira apenas caracteres não numéricos e não especiais" required autofocus>
                 <div class="row">
@@ -93,6 +93,8 @@
               </button>
             </div>
             <div class="modal-body">
+                <label>ID: {{modalData._id}}</label>
+                <br>
                 <label>Nº Patrimônio: {{modalData.patrimonio}}</label>
                 <br>
                 <label>Nome: {{modalData.nome}}</label>
@@ -121,6 +123,8 @@
               </button>
             </div>
             <div class="modal-body">
+                <label>ID: {{modalData._id}}</label>
+                <br>
                 <label>Nº Patrimônio: {{modalData.patrimonio}}</label>
                 <br>
                 <label>Nome: {{modalData.nome}}</label>
@@ -172,9 +176,8 @@ export default {
       this.modalData = data
       this.modalVisible = true
     },
-    editar (recurso) {
-      Resource.editar(recurso).then(resposta => {
-        console.log(resposta.data)
+    editar (r) {
+      Resource.editar(r).then(resposta => {
         alert('Cadastro efetuado com sucesso!')
         location.reload()
       }).catch(function (error) {

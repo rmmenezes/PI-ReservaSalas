@@ -31,7 +31,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
-    Usuario.findOneAndUpdate(req.body._id, {
+    Usuario.update({"_id": req.body._id}, {
         $set: {
             nome: req.body.nome,
             departamento: req.body.departamento,
