@@ -4,8 +4,9 @@ import FullCalendar from 'vue-full-calendar'
 import 'fullcalendar/dist/fullcalendar.min.css'
 import 'fullcalendar-scheduler/dist/scheduler.min.css'
 import router from './router'
+import moment from 'moment'
 
-Vue.use(FullCalendar, router)
+Vue.use(FullCalendar, router, moment)
 
 Vue.config.productionTip = false
 
