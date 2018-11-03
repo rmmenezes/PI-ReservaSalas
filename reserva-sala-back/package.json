@@ -17,6 +17,7 @@
     "http": "0.0.0",
     "mongoose": "^5.2.17",
     "mongose": "0.0.2-security",
+    "nodemailer": "^4.6.8",
     "npm": "^6.4.1",
     "xpress": "^2.4.6"
   },

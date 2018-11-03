@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
+const sendEmail = require('../csv/sendEmail')
 
 exports.get = (req, res, next) => {
     Usuario.find({})
@@ -14,10 +15,10 @@ exports.get = (req, res, next) => {
 
 exports.post = (req, res, next) => {
     var usuario = new Usuario(req.body);
-
     usuario
         .save()
         .then(x => {
+            sendEmail(usuario);
             res.status(200).send({
                 message: 'cadastrado'
             });
