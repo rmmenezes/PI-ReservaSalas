@@ -15,6 +15,5 @@ module.exports = (Usuario) =>{
     }, function(err){
         if(err)
             throw err;
-        console.log('E-mail enviado!');
     });
 };
