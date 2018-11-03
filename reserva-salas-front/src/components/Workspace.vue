@@ -12,13 +12,15 @@ import RegisterResources from './RegisterResources'
 import RegisterUsers from './RegisterUsers'
 import ReserveResources from './ReserveResources'
 import SearchUsers from './SearchUsers'
+import ReserveRoom from './ReserveRoom'
 export default {
   components: {
     Calendar,
     RegisterResources,
     RegisterUsers,
     ReserveResources,
-    SearchUsers
+    SearchUsers,
+    ReserveRoom
   }
 }
 </script>

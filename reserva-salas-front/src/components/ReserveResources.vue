@@ -26,7 +26,7 @@
           </div>
           <div class="col-md-4">
             <span><b>Data de Entrega:</b></span>
-            <datepicker :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_Reserva.data_entrega" :inline="true" :language="ptBR" :value="state.date"></datepicker>
+              <datepicker :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_Reserva.data_entrega" :inline="true" :language="ptBR" :value="state.date"></datepicker>
           </div>
           <div class="col-md-4">
             <span><b>Selecionado:</b></span>
@@ -101,13 +101,16 @@ export default {
       console.log(objReserva)
       if (parseInt(objReserva.quantidade_objs) < parseInt(objReserva.quantidade_reserva)) {
         alert('Reserva não efetuada: A quantidade excede o numero total no estoque.')
+        location.reload()
       } else {
         Resource.reservar(objReserva).then(resposta => {
           console.log(resposta.data)
           alert('Recurso reservado com sucesso!')
+          location.reload()
         }).catch(function (error) {
           console.log(error)
           alert('Não foi possível realizar a reserva, tente mais tarde.')
+          location.reload()
         })
         alert('Reservado com Sucesso!')
       }

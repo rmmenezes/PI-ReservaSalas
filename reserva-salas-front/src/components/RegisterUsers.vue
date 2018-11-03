@@ -39,14 +39,18 @@ export default {
   },
   methods: {
     salvar () {
-      User.salvar(this.obj_User).then(resposta => {
-        console.log(resposta.data)
-        alert('Cadastro efetuado com sucesso!')
-        location.reload()
-      }).catch(function (error) {
-        console.log(error)
-        alert('Erro, Cadastro não efetuado!')
-      })
+      if (this.obj_User.senha1 === this.obj_User.senha2) {
+        User.salvar(this.obj_User).then(resposta => {
+          console.log(resposta.data)
+          alert('Cadastro efetuado com sucesso!')
+          location.reload()
+        }).catch(function (error) {
+          console.log(error)
+          alert('Erro, Cadastro não efetuado!')
+        })
+      } else {
+        alert('Cadastro não Efetuado: As senhas se não correspondem')
+      }
     }
   }
 }

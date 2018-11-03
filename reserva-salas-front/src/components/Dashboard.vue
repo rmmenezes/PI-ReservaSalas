@@ -40,6 +40,8 @@
                 <router-link to="/dashboard/calendar">Cadastrar Sala</router-link>
                 <div class="dropdown-divider"></div>
                 <router-link to="/dashboard/calendar">Localizar Sala</router-link>
+                <div class="dropdown-divider"></div>
+                <router-link to="/dashboard/reserve_room">Reservar Sala</router-link>
             </div>
           </div>
         <div class="dropdown-divider"></div>
