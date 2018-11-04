@@ -32,7 +32,7 @@
                   <td>{{res.nome}}</td>
                   <td>{{res.quantidade}}</td>
                   <td class="actions">
-                    <button type="button" style="width: 75px;" class="btn btn-success btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais" @click="openModal(res)">Ver Mais</button>
+                    <button type="button" style="width: 75px;" class="btn btn-success btn-sm" @click="openModal(res)">Ver Mais</button>
                     <button type="button" style="width: 75px;" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-editar" @click="openModal(res)">Editar</button>
                     <button type="button" style="width: 75px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-excluir" @click="openModal(res)">Excluir</button>
                   </td>

@@ -4,90 +4,124 @@
         <span><b>Selecione o bloco:</b></span>
         <div class="row">
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('B')">BLOCO B</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('B')">BLOCO B</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('C')">BLOCO C</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('C')">BLOCO C</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('D')">BLOCO D</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('D')">BLOCO D</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('E')">BLOCO E</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('E')">BLOCO E</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('F')">BLOCO F</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('F')">BLOCO F</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('G')">BLOCO G</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('G')">BLOCO G</button>
             <br>
-            <button class="btn btn-primary btn-block btn-bloco" type="submit" @click="escolherBloco('H')">BLOCO H</button>
+            <button class="btn btn-primary btn-block btn-bloco" @click="escolherBloco('H')">BLOCO H</button>
             <br>
         </div>
-        <div id="list" class="row">
-          <div class="table-responsive col-md-12">
-            <table class="table table-striped" cellspacing="0" cellpadding="0" style="text-align: center;">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nº Patrimônio</th>
-                  <th>Nome</th>
-                  <th>Quantidade</th>
-                  <th class="actions">Ações</th>
-                </tr>
-              </thead>
-              <tbody v-for="(res, i) in res_localizar" :key="res.id" v-if="res_localizar">
-                <tr>
-                  <td>{{i+1}}</td>
-                  <td>{{res.patrimonio}}</td>
-                  <td>{{res.nome}}</td>
-                  <td>{{res.quantidade}}</td>
-                  <td class="actions">
-                    <span>Reservar BTN</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div v-if="res_busca_sala !== []">
+          <div class="row">
+            <br>
+            <button v-for="res in res_busca_bloco" :key="res.id" class="btn btn-success btn-block btn-sala" @click="openModal(res)" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais">{{res}}</button>
+            <br>
           </div>
-        </div>
-        <!-- MODAL VER MAIS (INICIO) -->
-        <div class="modal fade bd-example-modal-lg-ver-mais" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <!-- MODAL VER MAIS (INICIO) -->
+          <div class="modal fade bd-example-modal-lg-ver-mais" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+              <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ver Mais</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <h5 class="modal-title" id="exampleModalLabel">Reservas</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                  </button>
                 </div>
                 <div class="modal-body">
-                    <label>ID: {{modalData._id}}</label>
-                    <br>
-                    <label>Nº Patrimônio: {{modalData.patrimonio}}</label>
-                    <br>
-                    <label>Nome: {{modalData.nome}}</label>
-                    <br>
-                    <label>Marca: {{modalData.marca}}</label>
-                    <br>
-                    <label>Modelo: {{modalData.modelo}}</label>
-                    <br>
-                    <label>Quantidade: {{modalData.quantidade}}</label>
-                    <br>
-                    <label>Descição: {{modalData.desc}}</label>
-                    <br>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <h3>Para efetuar uma reserva nesta sala:</h3>
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-primary btn-block" @click="escolherBloco('H')">Efetuar Reserva</button>
+                    </div>
+                  </div>
+                  <div id="list" class="row">
+                    <div class="table-responsive col-md-12">
+                      <div class="dropdown-divider"></div>
+                      <br>
+                      <span>Segue abaixo a lista de reservas ja efetuadas para esta sala.</span>
+                      <table class="table table-striped" cellspacing="0" cellpadding="0" style="text-align: center;">
+                        <thead>
+                          <tr>
+                            <th>Sala</th>
+                            <th>Tipo</th>
+                            <th>Capacidade</th>
+                            <th>Reservado Por</th>
+                            <th>Horario</th>
+                          </tr>
+                        </thead>
+                        <tbody v-for="res  in res_busca_sala" :key="res.id">
+                          <tr>
+                            <td>{{res.nome}}</td>
+                            <td>{{res.tipo}}</td>
+                            <td>{{res.capacidade}}</td>
+                            <td>{{res.nomeProfessor}}</td>
+                            <td>{{res.horario}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div><!-- /#list -->
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
+          <!-- MODAL VER MAIS (FIM) -->
         </div>
-        <!-- MODAL VER MAIS (FIM) -->
-    </div>
+      </div>
 </template>
 
 <script>
+import ReservaSalas from '../services/Room.js'
 export default {
   data () {
     return {
-      bloco_selecionado: ''
+      bloco_selecionado: '',
+      res_busca_bloco: [],
+      res_busca_sala: [],
+      modalData: [],
+      modalVisible: false
     }
   },
   methods: {
+    openModal (data) {
+      this.modalVisible = true
+      this.localizar_por_salas(data)
+      this.modalData = this.res_busca_sala
+      console.log('modalData' + this.modalData)
+    },
     escolherBloco (b) {
       this.bloco_selecionado = b
+      this.localizar_por_bloco(b)
+      console.log(this.res_busca_bloco)
+    },
+    localizar_por_bloco (nome) {
+      console.log(nome)
+      ReservaSalas.listar(nome).then(resposta => {
+        console.log(resposta.data)
+        this.res_busca_bloco = resposta.data
+      }).catch(function (error) {
+        console.log(error)
+        alert('Registro não encontrado')
+      })
+    },
+    localizar_por_salas (nome) {
+      ReservaSalas.listar_por_sala(nome).then(resposta => {
+        this.res_busca_sala = resposta.data
+        console.log(this.res_busca_sala)
+      }).catch(function (error) {
+        console.log(error)
+        alert('Registro não encontrado')
+      })
     }
   }
 }
@@ -100,5 +134,14 @@ export default {
     margin-right:5px;
     margin-bottom: 10px;
     margin-left:15px;
+    margin-top:10px;
+}
+.btn-sala {
+    height: 40px;
+    width: 70px;
+    margin-right:5px;
+    margin-bottom: 10px;
+    margin-left:15px;
+    margin-top:10px;
 }
 </style>
