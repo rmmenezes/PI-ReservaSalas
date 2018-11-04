@@ -15,7 +15,7 @@ exports.get = (req, res, next) => {
 
 exports.getbyName = (req, res, next) => {
     Reserva.find({
-        nome: req.params.nome
+        nome: new RegExp(req.params.nome)
     })
         .then(data => {
             res.status(201).send(data);
