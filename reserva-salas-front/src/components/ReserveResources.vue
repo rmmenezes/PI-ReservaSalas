@@ -54,7 +54,8 @@ export default {
       res_localizar: [],
       nome_localizar: '',
       obj_Reserva: {
-        _id: '',
+        id_Usuario: '',
+        id_Recurso: '',
         quantidade_objs: '',
         quantidade_reserva: '',
         data_reserva: '',
