@@ -94,7 +94,8 @@ export default {
     selecionar (selecionado) {
       this.obj_selecionado = selecionado.nome + ' ' + selecionado.marca
       this.obj_Reserva.quantidade_objs = selecionado.quantidade
-      this.obj_Reserva._id = selecionado._id
+      this.obj_Reserva.id_Recurso = selecionado._id
+      this.obj_Reserva.id_Usuario = 'adm_Rafael' // colocar aqui o _id do usuario que vem do login (Navegador)
     },
     reservar (objReserva) {
       objReserva.data_reserva = date.format(objReserva.data_reserva, 'DD/MM/YYYY')
