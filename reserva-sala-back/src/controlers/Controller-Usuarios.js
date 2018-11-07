@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
+const sendEmail = require('../csv/sendEmail')
 
 exports.get = (req, res, next) => {
     Usuario.find({})
@@ -14,10 +15,10 @@ exports.get = (req, res, next) => {
 
 exports.post = (req, res, next) => {
     var usuario = new Usuario(req.body);
-
     usuario
         .save()
         .then(x => {
+            sendEmail(usuario);
             res.status(200).send({
                 message: 'cadastrado'
             });
@@ -31,7 +32,7 @@ exports.post = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
-    Usuario.findOneAndUpdate(req.body._id, {
+    Usuario.update({"_id": req.body._id}, {
         $set: {
             nome: req.body.nome,
             departamento: req.body.departamento,
@@ -68,8 +69,7 @@ exports.delete = (req, res, next) => {
 
 exports.getbyName = (req, res, next) =>{
     Usuario.find({
-        nome: req.params.nome
-
+        nome: new RegExp(req.params.nome)
     })
         .then(data => {
             res.status(201).send(data);

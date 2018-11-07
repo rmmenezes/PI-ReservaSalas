@@ -15,14 +15,25 @@ exports.get = (req, res, next) => {
 
 exports.getbyName = (req, res, next) => {
     Reserva.find({
-        nome: req.params.nome
-    })
+        nome: new RegExp(req.params.nome)
+    }).distinct('nome')
         .then(data => {
             res.status(201).send(data);
         }).catch(e => {
             res.status(400).send(e);
         });
 };
+
+exports.getbyNameSala = (req, res, next) => {
+    Reserva.find({
+        nome: new RegExp(req.params.nome)
+    }).then(data => {
+            res.status(201).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+};
+
 
 exports.getbyId = (req, res, next) => {
     Reserva.findById(

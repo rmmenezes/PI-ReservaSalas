@@ -6,6 +6,7 @@ const recursoSchema = new mongoose.Schema({
 
     patrimonio: {
         type: Number,
+        trim: true,
         required: true
     },
     nome: {
@@ -22,7 +23,7 @@ const recursoSchema = new mongoose.Schema({
         trim: true
     },
     quantidade: {
-        type: String,
+        type: Number,
         trim: true,
         required: true,
     },

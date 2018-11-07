@@ -8,6 +8,7 @@ import Calendar from '@/components/Calendar'
 import ReserveResources from '@/components/ReserveResources'
 import SearchUsers from '@/components/SearchUsers'
 import SearchResources from '@/components/SearchResources'
+import ReserveRoom from '@/components/ReserveRoom'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
           path: 'search_resources',
           name: 'SearchResources',
           component: SearchResources
+        },
+        {
+          path: 'reserve_room',
+          name: 'ReserveRoom',
+          component: ReserveRoom
         },
         {
           path: 'calendar',
