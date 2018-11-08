@@ -6,10 +6,11 @@ const controller = require('../controlers/Controller-Recursos');
 
 
 router.get('/admin', controller.getAll);
-router.get('/:nome', controller.getbyName);
+router.get('/reservas', controller.getAllReservas);
 router.post('/', controller.post);
 router.delete('/',controller.delete);
 router.put('/', controller.put);
+router.get('/:nome', controller.getbyName);
 
 
 module.exports = router;

@@ -13,6 +13,9 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    tipo: {
+        type: String
+    },
     departamento: {
         type: String,
         required: true

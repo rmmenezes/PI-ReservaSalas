@@ -16,6 +16,7 @@ mongoose.connect(config.connectionString);
 const Salas =  require('./models/Model-Reservas');
 const Usuarios =  require('./models/Model-Usuario');
 const Recursos =  require('./models/Model-Recursos');
+const ReservaRecursos = require('./models/Model-ReservaRecurso');
 
 //carrega as Rotas
 const indexRoutes = require('./routes/index');
