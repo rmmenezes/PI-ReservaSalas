@@ -1,8 +1,11 @@
 import { http } from './config'
 
 export default {
-  listar: () => {
-    return http.get('reservas' + '/')
+  listar: (nome) => {
+    return http.get('reservas' + '/' + nome)
+  },
+  listar_salas: (nome) => {
+    return http.get('listar_salas' + nome)
   },
   salvar: (recurso) => {
     return http.post('reservas', recurso)
