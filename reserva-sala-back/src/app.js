@@ -17,12 +17,14 @@ const Salas =  require('./models/Model-Reservas');
 const Usuarios =  require('./models/Model-Usuario');
 const Recursos =  require('./models/Model-Recursos');
 const ReservaRecursos = require('./models/Model-ReservaRecurso');
+const ReservaSala = require('./models/Model-ReservaSala');
 
 //carrega as Rotas
 const indexRoutes = require('./routes/index');
 const reservasRoutes = require('./routes/Routes-Reservas');
 const usuariosRoutes = require('./routes/Routes-Usuarios');
 const recursosRoutes = require('./routes/Routes-Recursos');
+const reservasSalas = require('./routes/Routes-Reserva-Sala');
 
 
 app.use(bodyParser.json());
@@ -52,8 +54,10 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoutes);
 app.use('/reservas', reservasRoutes);
+app.use('/reservas', reservasRoutes);
 app.use('/usuarios', usuariosRoutes);
 app.use('/recursos', recursosRoutes);
+app.use('/reserva-sala', reservasSalas);
 
 
 module.exports = app;

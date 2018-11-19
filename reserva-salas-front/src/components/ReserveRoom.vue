@@ -22,7 +22,7 @@
         <div v-if="res_busca_sala !== []">
           <div class="row">
             <br>
-            <button v-for="res in res_busca_bloco" :key="res.id" class="btn btn-success btn-block btn-sala" @click="openModal(res)" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais">{{res}}</button>
+            <button v-for="res in res_busca_bloco" :key="res.id" class="btn btn-success btn-block btn-sala" @click="openModal(res)" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais">{{res.nome}}</button>
             <br>
           </div>
           <!-- MODAL VER MAIS (INICIO) -->

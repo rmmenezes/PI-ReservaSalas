@@ -19,7 +19,7 @@
                 <input type="text" v-model="filtro.horario" class="form-control" placeholder="Horario">
             </div>
             <div class="col-md-2">
-                <input type="text" v-model="filtro.nome" class="form-control" placeholder="Nome *">
+                <button class="btn btn-primary btn-block" @click="listar_salas()">Localizar</button>
             </div>
         </div>
         <br>
@@ -58,7 +58,7 @@ export default {
       res_busca: [],
       modalData: [],
       modalVisible: false,
-      haFiltro: '0',
+      haFiltro: '1',
       filtro: {
         nome: '',
         tipo: '',
@@ -97,8 +97,5 @@ export default {
 </script>
 
 <style scoped>
-.col-md-2 {
-    margin-right:-10px;
-    margin-left:-10px;
-}
+
 </style>
