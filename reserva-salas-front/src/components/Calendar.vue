@@ -1,12 +1,24 @@
 <template>
 <div>
-  <form @submit.prevent="criar_evento ()">
-    <input type="text" v-model=obj_evento.title placeholder="TITULO">
-    <input type="text" v-model=obj_evento.start placeholder="START">
-    <input type="text" v-model=obj_evento.end placeholder="END">
-    <button class="btn btn-primary" type="submit">Cadastrar</button>
-  </form>
   <div id='calendar'></div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -30,6 +42,9 @@ export default {
     this.mananger_calendar()
   },
   methods: {
+    nada () {
+      alert('calned')
+    },
     criar_evento () {
       console.log(this.obj_evento)
       Sala.reservar(this.obj_evento).then(resposta => {
@@ -81,16 +96,7 @@ export default {
         selectable: true,
         slotLabelFormat: 'h(:mm):00',
         handleWindowResize: true,
-        contentHeight: 470,
-        eventClick: function (calEvent, jsEvent, view) {
-          alert('Event: ' + calEvent.title)
-          alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY)
-          alert('View: ' + view.name)
-          $(this).css('border-color', 'red')
-        },
-        dayClick: function () {
-          alert('a day has been clicked!')
-        }
+        contentHeight: 470
       })
     }
   }
