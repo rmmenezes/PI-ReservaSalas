@@ -40,38 +40,38 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <calendar></calendar>
+              <calendar ref='calendar'></calendar>
             </div>
             <div class="col-md-6">
-              <form @submit.prevent="">
+              <form @submit.prevent="cadastar_evento()">
                 <h4>Reservar Sala</h4>
-                <input type="text" class="form-control" placeholder="Nome da Reserva">
+                <input type="text" v-model="obj_reserva.title" class="form-control" placeholder="Nome da Reserva">
                 <div id="example-3">
-                  <input type="checkbox" id="jack" value="Seg">
-                  <label for="jack">Seg</label>
-                  <input type="checkbox" id="john" value="Ter">
-                  <label for="john">Ter</label>
-                  <input type="checkbox" id="mike" value="Qua">
-                  <label for="mike">Qua</label>
-                  <input type="checkbox" id="mike" value="Qui">
-                  <label for="mike">Qui</label>
-                  <input type="checkbox" id="mike" value="Sex">
-                  <label for="mike">Sex</label>
-                  <input type="checkbox" id="mike" value="Sab">
-                  <label for="mike">Sab</label>
+                  <input type="checkbox" value="Seg" v-model="obj_reserva.dias_semana">
+                  <label>Seg</label>
+                  <input type="checkbox" value="Ter" v-model="obj_reserva.dias_semana">
+                  <label>Ter</label>
+                  <input type="checkbox" value="Qua" v-model="obj_reserva.dias_semana">
+                  <label>Qua</label>
+                  <input type="checkbox" value="Qui" v-model="obj_reserva.dias_semana">
+                  <label>Qui</label>
+                  <input type="checkbox" value="Sex" v-model="obj_reserva.dias_semana">
+                  <label>Sex</label>
+                  <input type="checkbox" value="Sab" v-model="obj_reserva.dias_semana">
+                  <label>Sab</label>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <datepicker placeholder="Data Inicio" :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_Reserva.data_start" :inline="false" :language="ptBR" :value="state.date"></datepicker>
-                    <input type="text"  v-model="obj_Reserva.hora_start" placeholder="Horario Inicio" >
+                    <datepicker placeholder="Data Inicio" :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_reserva.data_start" :inline="false" :language="ptBR" :value="state.date"></datepicker>
+                    <input type="text"  v-model="obj_reserva.hora_start" placeholder="Horario Inicio" >
                   </div>
                   <div class="col-md-6">
-                    <datepicker placeholder="Data Fim" :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_Reserva.data_end" :inline="false" :language="ptBR" :value="state.date"></datepicker>
-                    <input type="text" v-model="obj_Reserva.hora_start" placeholder="Horario Fim" >
+                    <datepicker placeholder="Data Fim" :disabledDates="disabledDates" :highlighted="state.highlighted" v-model="obj_reserva.data_end" :inline="false" :language="ptBR" :value="state.date"></datepicker>
+                    <input type="text" v-model="obj_reserva.hora_end" placeholder="Horario Fim" >
                   </div>
                 </div>
                 <br>
-                <textarea id="inputDes" class="form-control" placeholder="Motivo da Reserva" rows="3"></textarea>
+                <textarea id="inputDes" class="form-control" placeholder="Motivo da Reserva" v-model="obj_reserva.descricao" rows="3"></textarea>
                 <br>
                 <button class="btn btn-primary" type="submit">Registrar</button>
               </form>
@@ -155,6 +155,8 @@ import Calendar from './Calendar'
 import Datepicker from 'vuejs-datepicker'
 import {ptBR, en} from 'vuejs-datepicker/dist/locale'
 import moment from 'moment'
+import date from 'date-and-time'
+moment().format('llll')
 export default {
   components: {
     Calendar,
@@ -162,14 +164,19 @@ export default {
   },
   data () {
     return {
+      obj_reserva: {
+        title: '',
+        data_start: '',
+        data_end: '',
+        hora_start: '',
+        hora_end: '',
+        dias_semana: [],
+        descricao: ''
+      },
       bloco_selecionado: '',
       res_busca_bloco: [],
       res_busca_sala: [],
       modalData: [],
-      obj_Reserva: {
-        data_start: '',
-        data_end: ''
-      },
       disabledDates: {
         to: new Date(Date.now() - 8640000)
       },
@@ -184,6 +191,16 @@ export default {
     }
   },
   methods: {
+    cadastar_evento () {
+      // this.$refs.calendar.criar_evento(this.obj_reserva)
+      // var dataStart = date.format(this.obj_reserva.data_start, 'YYYY-MM-DD')
+      var weeknumber = moment('
+      20-11-2018', 'DDMMYYYY').isoWeek()
+      // var dataEnd = date.format(this.obj_reserva.data_end, 'YYYY-MM-DD')
+      // var horaStart = this.obj_reserva.hora_start
+      // var horaEnd = this.obj_reserva.hora_end
+      console.log(weeknumber)
+    },
     openModal (data) {
       this.localizar_por_salas(data)
       this.modalData = this.res_busca_sala
