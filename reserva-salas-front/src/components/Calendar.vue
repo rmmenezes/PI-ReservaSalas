@@ -16,7 +16,8 @@ export default {
       obj_evento: {
         title: '',
         start: '',
-        end: ''
+        end: '',
+        description: ''
       }
     }
   },

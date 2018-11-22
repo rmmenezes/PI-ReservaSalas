@@ -38,11 +38,12 @@
             <button v-for="res in res_busca_bloco" :key="res.id" class="btn btn-success btn-block btn-sala" @click="openModal(res)" data-toggle="modal" data-target=".bd-example-modal-lg-ver-mais">{{res}}</button>
             <br>
           </div>
+          <div class="dropdown-divider"></div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <calendar ref='calendar'></calendar>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <form @submit.prevent="cadastar_evento()">
                 <h4>Reservar Sala</h4>
                 <input type="text" v-model="obj_reserva.title" class="form-control" placeholder="Nome da Reserva">
@@ -73,7 +74,7 @@
                 <br>
                 <textarea id="inputDes" class="form-control" placeholder="Motivo da Reserva" v-model="obj_reserva.descricao" rows="3"></textarea>
                 <br>
-                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-primary" type="submit">Reservar</button>
               </form>
             </div>
           </div>
@@ -192,14 +193,18 @@ export default {
   },
   methods: {
     cadastar_evento () {
-      // this.$refs.calendar.criar_evento(this.obj_reserva)
-      // var dataStart = date.format(this.obj_reserva.data_start, 'YYYY-MM-DD')
-      var weeknumber = moment('
-      20-11-2018', 'DDMMYYYY').isoWeek()
-      // var dataEnd = date.format(this.obj_reserva.data_end, 'YYYY-MM-DD')
-      // var horaStart = this.obj_reserva.hora_start
-      // var horaEnd = this.obj_reserva.hora_end
-      console.log(weeknumber)
+      var dataStart = date.format(this.obj_reserva.data_start, 'YYYY-MM-DD')
+      var dataEnd = date.format(this.obj_reserva.data_end, 'YYYY-MM-DD')
+      var horaStart = this.obj_reserva.hora_start
+      var horaEnd = this.obj_reserva.hora_end
+      var obj = {
+        title: this.obj_reserva.title,
+        start: dataStart + 'T' + horaStart,
+        end: dataEnd + 'T' + horaEnd,
+        description: this.obj_reserva.descricao
+      }
+      this.$refs.calendar.criar_evento(obj)
+      console.log(obj)
     },
     openModal (data) {
       this.localizar_por_salas(data)

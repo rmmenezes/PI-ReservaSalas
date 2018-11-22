@@ -49,7 +49,6 @@
             <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown">Relatórios</button>
             <div class="dropdown-menu" style="text-align: center">
                 <router-link to="/dashboard/relatorio_salas">Relatorio Por Salas</router-link>
-                <div class="dropdown-divider"></div>
             </div>
           </div>
         <div class="dropdown-divider"></div>
