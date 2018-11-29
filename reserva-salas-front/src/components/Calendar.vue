@@ -25,16 +25,14 @@ export default {
     this.mananger_calendar()
   },
   methods: {
-    nada () {
-      alert('s')
-    },
     criar_evento (obj) {
       Sala.reservar(obj).then(resposta => {
+        console.log(resposta)
+        alert('Erro, Cadastro não efetuadoXS!')
+      }).catch(function (x) {
+        console.log(x)
         alert('Cadastro efetuado com sucesso!')
         location.reload()
-      }).catch(function (error) {
-        console.log(error)
-        alert('Erro, Cadastro não efetuado!')
       })
     },
     buscar_eventos () {
@@ -47,7 +45,7 @@ export default {
         this.calendar(obj)
       }).catch(function (error) {
         console.log(error)
-        alert('Erro, Cadastro não efetuado!')
+        alert('Erro, Cadastro não encontrado!')
       })
     },
     mananger_calendar () {

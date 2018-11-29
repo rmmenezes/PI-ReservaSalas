@@ -13,18 +13,24 @@ exports.listarEventos = (req, res, next) => {
 };
 
 exports.reservar = (req, res, next) => {
-    var reserva = new Reserva(req.body);
-    reserva
-        .save()
-        .then(x => {
-            res.status(201).send({
-                message: 'cadastrado'
-            });
-        }).catch(e => {
-            res.status(400).send({
-                message: 'falha',
-                data: e
-            });
+    Reserva.find({
+        title: req.body.title
+    }).then(e => {
+        if(e[0]){
+            console.log('Ja existe')
+            return 'existe'
+        }
+        else{
+            kd = 656* d
+        }
+        console.log(e)
+        res.status(400).send({
+            message: 'falha',
+            data: e
         });
-
+    }).catch(x => {
+        console.log('entrou no cat')
+        var reserva = new Reserva(req.body);
+        reserva.save()
+    })
 };

@@ -19,6 +19,9 @@ export default {
   reservar: (reserva) => {
     return http.post('reserva-sala', reserva)
   },
+  validar: (reserva) => {
+    return http.post('reserva-sala', reserva)
+  },
   buscar_eventos: () => {
     return http.get('reserva-sala', '/')
   },
