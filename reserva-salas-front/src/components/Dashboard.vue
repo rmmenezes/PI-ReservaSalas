@@ -44,6 +44,13 @@
                 <router-link to="/dashboard/reserve_room">Reservar Sala</router-link>
             </div>
           </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropright">
+            <button type="button" class="btn btn-link  btn-block" style="font-weight: bold" data-toggle="dropdown">Relatórios</button>
+            <div class="dropdown-menu" style="text-align: center">
+                <router-link to="/dashboard/relatorio_salas">Relatorio Por Salas</router-link>
+            </div>
+          </div>
         <div class="dropdown-divider"></div>
         </nav>
         <!-- Aqui esta a workspace  -->

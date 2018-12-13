@@ -50,7 +50,6 @@ exports.getbyId = (req, res, next) => {
 
 exports.post = (req, res, next) => {
     var reserva = new Reserva(req.body);
-
     reserva
         .save()
         .then(x => {

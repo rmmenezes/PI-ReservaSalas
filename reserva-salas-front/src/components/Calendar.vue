@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Sala from '../services/Room.js'
 import $ from 'jquery'
 import 'fullcalendar'
 import 'fullcalendar-scheduler'
@@ -12,55 +13,74 @@ import 'fullcalendar/dist/locale/pt-br.js'
 export default {
   data () {
     return {
+      obj_evento: {
+        title: '',
+        start: '',
+        end: '',
+        description: ''
+      }
+    }
+  },
+  mounted () {
+    this.mananger_calendar()
+  },
+  methods: {
+    criar_evento (obj) {
+      Sala.reservar(obj).then(resposta => {
+        console.log(resposta)
+        alert('Erro, Cadastro não efetuadoXS!')
+      }).catch(function (x) {
+        console.log(x)
+        alert('Cadastro efetuado com sucesso!')
+        location.reload()
+      })
+    },
+    buscar_eventos () {
+      let obj = []
+      Sala.buscar_eventos().then(resposta => {
+        for (var i = 0; i < resposta.data.length; i++) {
+          var objtemp = {_id: resposta.data[i]._id, title: resposta.data[i].title, start: resposta.data[i].start, end: resposta.data[i].end}
+          obj.push(objtemp)
+        }
+        this.calendar(obj)
+      }).catch(function (error) {
+        console.log(error)
+        alert('Erro, Cadastro não encontrado!')
+      })
+    },
+    mananger_calendar () {
+      this.buscar_eventos()
+    },
+    calendar (obj) {
+      $('#calendar').fullCalendar({
+        events: obj,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        themeSystem: 'bootstrap4',
+        bootstrapGlyphicons: {
+          close: 'glyphicon-remove',
+          prev: 'glyphicon-chevron-left',
+          next: 'glyphicon-chevron-right',
+          prevYear: 'glyphicon-backward',
+          nextYear: 'glyphicon-forward'
+        },
+        weekends: true,
+        locale: 'pt-br',
+        timezone: 'Brazil',
+        timeFormat: 'h:mm',
+        navLinks: true,
+        selectable: true,
+        slotLabelFormat: 'h(:mm):00',
+        handleWindowResize: true,
+        contentHeight: 470
+      })
     }
   }
 }
-$(function () {
-  $('#calendar').fullCalendar({
-    events: [{
-      title: 'Evento1',
-      start: '2018-09-24T13:13:55.008',
-      end: '2018-09-30T13:13:55.008'
-    },
-    {
-      title: 'Evento2',
-      start: '2018-09-24T13:13:55.008',
-      end: '2018-09-30T13:13:55-0400'
-    }
-    ],
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-    },
-    themeSystem: 'bootstrap4',
-    bootstrapGlyphicons: {
-      close: 'glyphicon-remove',
-      prev: 'glyphicon-chevron-left',
-      next: 'glyphicon-chevron-right',
-      prevYear: 'glyphicon-backward',
-      nextYear: 'glyphicon-forward'
-    },
-    weekends: true,
-    locale: 'pt-br',
-    timezone: 'Brazil',
-    timeFormat: 'h:mm',
-    navLinks: true,
-    selectable: true,
-    slotLabelFormat: 'h(:mm):00',
-    handleWindowResize: true,
-    contentHeight: 470,
-    eventClick: function (calEvent, jsEvent, view) {
-      alert('Event: ' + calEvent.title)
-      alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY)
-      alert('View: ' + view.name)
-      $(this).css('border-color', 'red')
-    },
-    dayClick: function () {
-      alert('a day has been clicked!')
-    }
-  })
-})
+
 </script>
 
 <style>

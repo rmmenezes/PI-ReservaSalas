@@ -4,6 +4,9 @@ export default {
   listar: (nome) => {
     return http.get('reservas' + '/' + nome)
   },
+  listar_salas: (nome) => {
+    return http.get('listar_salas' + nome)
+  },
   salvar: (recurso) => {
     return http.post('reservas', recurso)
   },
@@ -14,7 +17,13 @@ export default {
     return http.delete('reservas', recurso)
   },
   reservar: (reserva) => {
-    return http.reservar('reservas', reserva)
+    return http.post('reserva-sala', reserva)
+  },
+  validar: (reserva) => {
+    return http.post('reserva-sala', reserva)
+  },
+  buscar_eventos: () => {
+    return http.get('reserva-sala', '/')
   },
   listar_por_sala: (nome) => {
     return http.get('reservas' + '/por_sala/' + nome)

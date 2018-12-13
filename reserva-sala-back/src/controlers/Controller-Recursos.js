@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Recurso = mongoose.model('Recurso');
+const ReservaRecurso = mongoose.model('reservarecursos');
 
 exports.getAll = (req, res, next) => {
     Recurso.find({})
@@ -11,6 +12,18 @@ exports.getAll = (req, res, next) => {
             res.status(400).send(e);
         });
 };
+
+exports.getAllReservas = (req, res, next) => {
+   
+    ReservaRecurso.find({})
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+        next();
+};
+
 exports.post = (req, res, next) => {
     var recurso = new Recurso(req.body);
 
@@ -19,6 +32,26 @@ exports.post = (req, res, next) => {
         .then(x => {
             res.status(201).send({
                 message: 'cadastrado'
+            });
+        }).catch(e => {
+            res.status(400).send({
+                message: 'falha',
+                data: e
+            });
+        });
+
+};
+
+exports.postReserva = (req, res, next) => {
+    var reserva = new ReservaRecurso(req.body);
+    console.log(reserva.quantidade_objs);
+
+    reserva
+        .save()
+        .then(x => {
+            res.status(200).send({
+                message: 'cadastrado'
+                
             });
         }).catch(e => {
             res.status(400).send({

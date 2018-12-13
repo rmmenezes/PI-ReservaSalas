@@ -2,7 +2,7 @@ import { http } from './config'
 
 export default {
   listar: (nome) => {
-    return http.get('recursos' + '/' + nome)
+    return http.get('recursos/' + nome)
   },
   salvar: (recurso) => {
     return http.post('recursos', recurso)

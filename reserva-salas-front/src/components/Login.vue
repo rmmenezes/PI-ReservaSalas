@@ -32,8 +32,8 @@ export default {
     }
   },
   methods: {
-    editar () {
-      Login.listar(this.obj_login).then(resposta => {
+    login () {
+      Login.logar(this.obj_login).then(resposta => {
         console.log(resposta.data)
         if (resposta) {
           this.$router.push('dashboard')
